@@ -1,0 +1,9 @@
+baseClass: "com.paypal.selion.testcomponents.BasicPageImpl"
+platform: "mobile"
+defaultLocale: "US"
+elements:
+  dynamicList:
+    android:
+      US: "//android.widget.ListView[2]"
+    ios:
+      US: "test"
