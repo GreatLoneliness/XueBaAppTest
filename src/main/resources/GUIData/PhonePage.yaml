@@ -1,0 +1,19 @@
+baseClass: "com.paypal.selion.testcomponents.BasicPageImpl"
+platform: "mobile"
+defaultLocale: "US"
+elements:
+  phoneTextField:
+    android:
+      US: "//android.view.View[2]"
+    ios:
+      US: "test" 
+  authcodeTextField:
+    android:
+      US: "//android.view.View[4]"
+    ios:
+      US: "test"    
+  bindButton:
+    android:
+      US: "//android.view.View[6]"
+    ios:
+      US: "test"               

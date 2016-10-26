@@ -3,7 +3,7 @@
     parallel="false" data-provider-thread-count="50" annotations="JDK">
     <!-- SELENIUM CONFIGURATION -->
     <parameter name="mobileNodeType" value="appium" />
-    <parameter name="seleniumhost" value="0.0.0.0" />   
+    <parameter name="seleniumhost" value="127.0.0.1" />   
     <parameter name="seleniumport" value="4723" />
     <parameter name="mobileAppLanguage" value="en-US"/>    
     <parameter name="mobilePlatform" value="android"/>   
@@ -14,7 +14,9 @@
     <test verbose="2" name="AppEBayAndroidTest" annotations="JDK">
         <classes>
 <!--             <class name="com.xueba.test.LoginTest"/> -->
-             <class name="com.xueba.testcase.RegisterTest"/>
+<!--              <class name="com.xueba.testcase.RegisterTest"/> -->
+<!--              <class name="com.xueba.testcase.ChangePhoneTest"/> -->
+             <class name="com.xueba.testcase.ChangeEmailTest"/>
         </classes>
     </test>
 

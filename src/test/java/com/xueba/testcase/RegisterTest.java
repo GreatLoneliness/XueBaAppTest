@@ -41,7 +41,7 @@ public class RegisterTest {
 		registerPage.getPhoneTextField().setText(PhoneGenerator.getPhone());
 		registerPage.getAuthcodeTextField().setText(authcode);
 		registerPage.getIdTextField().setText(IDGenerator.getID());
-		registerPage.getMailTextField().setText(EmailGenerator.getEmail(6, 18));
+		registerPage.getMailTextField().setText(EmailGenerator.getEmail(6, 9));
 		registerPage.getRegisterButton().tap(homePage.getDynamicList());
 		SeLionReporter.log("register successfully, goto homepage now", true);
 	}
