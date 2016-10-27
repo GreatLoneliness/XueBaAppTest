@@ -16,7 +16,8 @@
 <!--             <class name="com.xueba.test.LoginTest"/> -->
 <!--              <class name="com.xueba.testcase.RegisterTest"/> -->
 <!--              <class name="com.xueba.testcase.ChangePhoneTest"/> -->
-             <class name="com.xueba.testcase.ChangeEmailTest"/>
+<!--              <class name="com.xueba.testcase.ChangeEmailTest"/> -->
+             <class name="com.xueba.testcase.ChangeUserInforTest"/>
         </classes>
     </test>
 
