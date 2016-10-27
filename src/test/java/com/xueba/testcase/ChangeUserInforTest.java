@@ -61,12 +61,12 @@ public class ChangeUserInforTest {
 		WebDriverWaitUtils.waitUntilElementIsVisible(loginPage.getRegisterButton());
 		loginPage.getRegisterButton().tap(registerPage.getPhoneTextField());
 		phone1 = PhoneGenerator.getPhone();
-		phone2 = changeString(phone1);
+		phone2 = changeString(phone1, 3);
 		registerPage.getPhoneTextField().setText(phone1);
 		registerPage.getAuthcodeTextField().setText(authcode);
 		registerPage.getIdTextField().setText(IDGenerator.getID());
 		email1 = EmailGenerator.getEmail(6, 9);
-		email2 = changeString(email1);
+		email2 = changeString(email1, 0);
 		registerPage.getMailTextField().setText(email1);
 		registerPage.getRegisterButton().tap(homePage.getUserElement());
 		SeLionReporter.log("register successfully, goto homepage now", true);
@@ -96,9 +96,6 @@ public class ChangeUserInforTest {
 	
 	
 	public void changeEmail(String email1, String email2) {
-		WebDriverWaitUtils.waitUntilElementIsVisible("");
-		homePage.getUserElement().tap(userPage.getUserInforElement());
-		userPage.getUserInforElement().tap(userInforPage.getEmailElement());
 		setEmail(email1,email2);
 		setEmail(email2, email1);
 	}
@@ -109,19 +106,19 @@ public class ChangeUserInforTest {
 		WebDriverWaitUtils.waitUntilElementIsVisible(emailPage.getEmailTextField());
 		clearText(emailPage.getEmailTextField(), email1);
 		emailPage.getEmailTextField().setText(email2);
-		emailPage.getBindButton().tap(userInforPage.getPhoneElement());
+		emailPage.getBindButton().tap(userInforPage.getEmailElement());
 		SeLionReporter.log("change successfully, goto user information page now", true);
 	}
 	
-	public String changeString(String str) {
+	public String changeString(String str, int index) {
 		char[] chars = str.toCharArray();
 		
-		if (chars[0]=='a' || chars[0]=='A' || chars[0]=='0') {
-			chars[0] += 1;
-		} else if (chars[0]=='z' || chars[0]=='Z' || chars[0]=='9') {
-			chars[0] -= 1;
+		if (chars[index]=='a' || chars[index]=='A' || chars[index]=='0') {
+			chars[index] += 1;
+		} else if (chars[index]=='z' || chars[index]=='Z' || chars[index]=='9') {
+			chars[index] -= 1;
 		} else {
-			chars[0] += 1;			
+			chars[index] += 1;		
 		}
 		
 		return String.valueOf(chars);
