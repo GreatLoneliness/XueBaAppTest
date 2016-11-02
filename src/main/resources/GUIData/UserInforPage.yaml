@@ -11,4 +11,9 @@ elements:
     android:
       US: "//android.view.View[3]//android.view.View[1]"
     ios:
-      US: "test"      
+      US: "test"  
+  backElement:
+    android:
+      US: "//android.widget.ImageButton[1]"
+    ios:
+      US: "test"        

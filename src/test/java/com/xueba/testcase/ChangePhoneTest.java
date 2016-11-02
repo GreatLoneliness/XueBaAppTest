@@ -3,14 +3,13 @@ package com.xueba.testcase;
 import org.testng.annotations.Test;
 
 import com.paypal.selion.annotations.MobileTest;
-import com.paypal.selion.platform.mobile.elements.MobileTextField;
 import com.paypal.selion.platform.utilities.WebDriverWaitUtils;
 import com.paypal.selion.reports.runtime.SeLionReporter;
-import com.zhijin.HomePage;
-import com.zhijin.LoginPage;
-import com.zhijin.PhonePage;
-import com.zhijin.UserInforPage;
-import com.zhijin.UserPage;
+import com.xueba.pageext.LoginPageExt;
+import com.xueba.pageext.PhonePageExt;
+import com.xueba.pageext.StudyPageExt;
+import com.xueba.pageext.UserInforPageExt;
+import com.xueba.pageext.UserPageExt;
 
 /**
  * 
@@ -20,60 +19,41 @@ import com.zhijin.UserPage;
 
 public class ChangePhoneTest {
 
-	private LoginPage loginPage;
-	private HomePage homePage;
-	private UserPage userPage;
-	private UserInforPage userInforPage;
-	private PhonePage phonePage;
+	private LoginPageExt loginPageExt;
+	private StudyPageExt studyPageExt;
+	private UserPageExt userPageExt;
+	private UserInforPageExt userInforPageExt;
+	private PhonePageExt phonePageExt;
 
 	private String phone1 = "18910213610";
-	private String phone2 = "18910213611";
+	private String phone2 = "18910219999";
 	private String authcode = "789456";
 
-	public void init() {
-		loginPage = new LoginPage();
-		homePage = new HomePage();
-		userPage = new UserPage();
-		userInforPage = new UserInforPage();
-		phonePage = new PhonePage();
-	}
 
 	@Test
 	@MobileTest
 	public void testChangePhone() {
 		init();
-		login(phone1, authcode);
-	    changePhone(phone1, phone2);
-	}
-
-	public void login(String phone, String authcode) {
-		WebDriverWaitUtils.waitUntilElementIsVisible(loginPage.getPhoneTextField());
-		loginPage.getPhoneTextField().setText(phone1);
-		loginPage.getAuthcodeTextField().setText(authcode);
-		loginPage.getLoginButton().tap(homePage.getUserElement());
-	}
-
-	public void changePhone(String phone1, String phone2) {
-		homePage.getUserElement().tap(userPage.getUserInforElement());
-		userPage.getUserInforElement().tap(userInforPage.getPhoneElement());
-		setPhone(phone1, phone2);
-		setPhone(phone2, phone1);
-	}
-
-	public void setPhone(String phone1, String phone2) {
-		userInforPage.getPhoneElement().tap(phonePage.getPhoneTextField());
-		WebDriverWaitUtils.waitUntilElementIsVisible(phonePage.getPhoneTextField());
-		clearText(phonePage.getPhoneTextField(), phone1);
-		phonePage.getPhoneTextField().setText(phone2);
-		phonePage.getAuthcodeTextField().setText(authcode);
-		phonePage.getBindButton().tap(userInforPage.getPhoneElement());
-		SeLionReporter.log("change successfully, goto user information page now", true);
+		loginPageExt.login(phone1, authcode);
+		studyPageExt.gotoUserPage();
+		userPageExt.gotoUserInforPage();
+		changePhone(phone1, phone2, authcode);
+		changePhone(phone2, phone1, authcode);
 	}
 	
-	public void clearText(MobileTextField tx, String str) {
-		for (int i = 0; i < str.length(); ++i) {
-			tx.clearText();
-		}
+	public void init() {
+		loginPageExt = new LoginPageExt();
+		studyPageExt = new StudyPageExt();
+		userPageExt = new UserPageExt();
+		userInforPageExt = new UserInforPageExt();
+		phonePageExt = new PhonePageExt();
+	}
+	
+	public void changePhone(String phone1, String phone2, String authcode) {
+		userInforPageExt.gotoPhonePage();
+	    phonePageExt.changePhone(phone1, phone2, authcode);
+	    WebDriverWaitUtils.waitUntilElementIsVisible(userInforPageExt.getPhoneElement());
+	    SeLionReporter.log("change successfully, goto user information page now", true);
 	}
 
 }

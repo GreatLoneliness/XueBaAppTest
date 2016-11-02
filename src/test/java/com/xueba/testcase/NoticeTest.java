@@ -5,14 +5,10 @@ import org.testng.annotations.Test;
 import com.paypal.selion.annotations.MobileTest;
 import com.paypal.selion.platform.utilities.WebDriverWaitUtils;
 import com.paypal.selion.reports.runtime.SeLionReporter;
-import com.utils.EmailGenerator;
-import com.utils.IDGenerator;
-import com.utils.NoticeUtil;
-import com.utils.PhoneGenerator;
-import com.zhijin.HomePage;
-import com.zhijin.LoginPage;
-import com.zhijin.NoticePage;
-import com.zhijin.RegisterPage;
+import com.xueba.util.NoticeUtil;
+import com.zhijin.xueba.LoginPage;
+import com.zhijin.xueba.NoticePage;
+import com.zhijin.xueba.StudyPage;
 
 /**
  * 通知测试
@@ -28,14 +24,14 @@ public class NoticeTest {
 
 	private NoticePage noticePage;
 	private LoginPage loginPage;
-	private HomePage homePage;
+	private StudyPage studyPage;
 
 	/**
 	 * 初始化界面对象
 	 */
 	private void init() {
 		loginPage = new LoginPage();
-		homePage = new HomePage();
+		studyPage = new StudyPage();
 		noticePage = new NoticePage();
 		NoticeUtil.sendMeetingNotice();// 发送两条通知
 		NoticeUtil.sendMeetingNotice();
@@ -46,25 +42,25 @@ public class NoticeTest {
 	public void testNoticeConfirmGo() {
 		init();
 		login();
-		homePage.getNoticeButton().tap(noticePage.getNoticeOneLabel());// 点击主页通知按钮
+		studyPage.getNoticeButton().tap(noticePage.getNoticeOneLabel());// 点击主页通知按钮
 		SeLionReporter.log("goto noticeList now", true);
 		noticePage.getNoticeOneLabel().tap(noticePage.getNoticeDetailOneButton());// 点击通知列表第一项通知
 		noticePage.getNoticeDetailOneButton().tap();// 点击确认参会按钮
 		WebDriverWaitUtils.waitUntilElementIsInvisible(noticePage.getNoticeDetailTwoButton());// 等待直到界面只显示一个按钮
 		SeLionReporter.log("notice confirm successfully", true);
-		noticePage.getNoticeBackButton().tap(homePage.getNoticeButton());// 返回到通知列表
+		noticePage.getNoticeBackButton().tap(studyPage.getNoticeButton());// 返回到通知列表
 	}
 
 	@Test(priority = 2)
 	@MobileTest
 	public void testNoticeConfirmNotGo() {
-		homePage.getNoticeButton().tap(noticePage.getNoticeOneLabel());// 点击主页通知按钮
+		studyPage.getNoticeButton().tap(noticePage.getNoticeOneLabel());// 点击主页通知按钮
 		SeLionReporter.log("goto noticeList now", true);
 		noticePage.getNoticeOneLabel().tap(noticePage.getNoticeDetailOneButton());// 点击通知列表第一项通知
 		noticePage.getNoticeDetailTwoButton().tap();// 点击不参会按钮
 		WebDriverWaitUtils.waitUntilElementIsInvisible(noticePage.getNoticeDetailTwoButton());// 等待直到界面只显示一个按钮
 		SeLionReporter.log("notice confirmNotGo successfully", true);
-		noticePage.getNoticeBackButton().tap(homePage.getNoticeButton());// 返回到通知列表
+		noticePage.getNoticeBackButton().tap(studyPage.getNoticeButton());// 返回到通知列表
 	}
 
 	/**
@@ -74,7 +70,7 @@ public class NoticeTest {
 		WebDriverWaitUtils.waitUntilElementIsVisible(loginPage.getPhoneTextField());
 		loginPage.getPhoneTextField().setText(phone);
 		loginPage.getAuthcodeTextField().setText(authcode);
-		loginPage.getLoginButton().tap(homePage.getNoticeButton());
+		loginPage.getLoginButton().tap(studyPage.getNoticeButton());
 		SeLionReporter.log("login successfully, goto homepage now", true);
 	}
 

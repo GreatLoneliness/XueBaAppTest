@@ -1,4 +1,4 @@
-package com.utils;
+package com.xueba.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

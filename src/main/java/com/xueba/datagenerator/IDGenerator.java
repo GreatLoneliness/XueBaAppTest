@@ -1,4 +1,4 @@
-package com.utils;
+package com.xueba.datagenerator;
 
 import java.util.Calendar;
 import java.util.Collection;

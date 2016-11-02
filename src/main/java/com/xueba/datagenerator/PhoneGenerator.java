@@ -1,4 +1,4 @@
-package com.utils;
+package com.xueba.datagenerator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

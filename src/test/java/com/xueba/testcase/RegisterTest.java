@@ -5,12 +5,12 @@ import org.testng.annotations.Test;
 import com.paypal.selion.annotations.MobileTest;
 import com.paypal.selion.platform.utilities.WebDriverWaitUtils;
 import com.paypal.selion.reports.runtime.SeLionReporter;
-import com.utils.EmailGenerator;
-import com.utils.IDGenerator;
-import com.utils.PhoneGenerator;
-import com.zhijin.HomePage;
-import com.zhijin.LoginPage;
-import com.zhijin.RegisterPage;
+import com.xueba.datagenerator.EmailGenerator;
+import com.xueba.datagenerator.IDGenerator;
+import com.xueba.datagenerator.PhoneGenerator;
+import com.xueba.pageext.LoginPageExt;
+import com.xueba.pageext.RegisterPageExt;
+import com.xueba.pageext.StudyPageExt;
 
 /**
  * 
@@ -20,30 +20,29 @@ import com.zhijin.RegisterPage;
 
 public class RegisterTest {
 	
-	private LoginPage loginPage;
-	private RegisterPage registerPage;
-	private HomePage homePage;
+	private LoginPageExt loginPageExt;
+	private RegisterPageExt registerPageExt;
+	private StudyPageExt studyPageExt;
 	
+	private String phone = PhoneGenerator.getPhone();
 	private String authcode = "789456";
-	
-	public void init() {
-		loginPage = new LoginPage();
-		registerPage = new RegisterPage();
-		homePage = new HomePage();		
-	}
-	
+	private String id = IDGenerator.getID();
+	private String email = EmailGenerator.getEmail(6, 9);
+		
 	@Test
 	@MobileTest
 	public void testRegister() {
 		init();
-		WebDriverWaitUtils.waitUntilElementIsVisible(loginPage.getRegisterButton());
-		loginPage.getRegisterButton().tap(registerPage.getPhoneTextField());
-		registerPage.getPhoneTextField().setText(PhoneGenerator.getPhone());
-		registerPage.getAuthcodeTextField().setText(authcode);
-		registerPage.getIdTextField().setText(IDGenerator.getID());
-		registerPage.getMailTextField().setText(EmailGenerator.getEmail(6, 9));
-		registerPage.getRegisterButton().tap(homePage.getDynamicList());
-		SeLionReporter.log("register successfully, goto homepage now", true);
+		loginPageExt.gotoRegisterPage();
+		registerPageExt.register(phone, authcode, id, email);
+		WebDriverWaitUtils.waitUntilElementIsVisible(studyPageExt.getDynamicList());
+		SeLionReporter.log("register successfully, goto study page now", true);
+	}
+	
+	public void init() {
+		loginPageExt = new LoginPageExt();
+		registerPageExt = new RegisterPageExt();
+		studyPageExt = new StudyPageExt();
 	}
 
 }

@@ -12,16 +12,9 @@
 	<parameter name="mobileDeviceType" value="android" />
 	<parameter name="appPath" value="src/test/resources/app/xueba.apk" />
 
-	<test verbose="2" name="xuebaTest" annotations="JDK">
+	<test verbose="2" name="AndroidTest" annotations="JDK">
 		<classes>
-			<!-- <class name="com.xueba.test.LoginTest"/> -->
-			<!-- <class name="com.xueba.testcase.RegisterTest"/> -->
-			<!-- <class name="com.xueba.testcase.ChangePhoneTest"/> -->
-			<!-- <class name="com.xueba.testcase.ChangeEmailTest"/> -->
-			<!-- <class name="com.xueba.testcase.ChangeUserInforTest"/> -->
-			<class name="com.xueba.testcase.NoticeTest">
-			</class>
-
+			<class name="com.xueba.testcase.ChangeUserInforTest"></class>
 		</classes>
 	</test>
 

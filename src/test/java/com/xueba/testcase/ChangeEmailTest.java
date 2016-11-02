@@ -3,14 +3,13 @@ package com.xueba.testcase;
 import org.testng.annotations.Test;
 
 import com.paypal.selion.annotations.MobileTest;
-import com.paypal.selion.platform.mobile.elements.MobileTextField;
 import com.paypal.selion.platform.utilities.WebDriverWaitUtils;
 import com.paypal.selion.reports.runtime.SeLionReporter;
-import com.zhijin.EmailPage;
-import com.zhijin.HomePage;
-import com.zhijin.LoginPage;
-import com.zhijin.UserInforPage;
-import com.zhijin.UserPage;
+import com.xueba.pageext.EmailPageExt;
+import com.xueba.pageext.LoginPageExt;
+import com.xueba.pageext.StudyPageExt;
+import com.xueba.pageext.UserInforPageExt;
+import com.xueba.pageext.UserPageExt;
 
 /**
  * 
@@ -20,61 +19,44 @@ import com.zhijin.UserPage;
 
 public class ChangeEmailTest {
 
-	private LoginPage loginPage;
-	private HomePage homePage;
-	private UserPage userPage;
-	private UserInforPage userInforPage;
-	private EmailPage emailPage;
+	private LoginPageExt loginPageExt;
+	private StudyPageExt studyPageExt;
+	private UserPageExt userPageExt;
+	private UserInforPageExt userInforPageExt;
+	private EmailPageExt emailPageExt;
 
 	private String phone = "18910213610";
 	private String authcode = "789456";
 	private String email1 = "ting2jinjin@gmail.com";
-	private String email2 = "ting3jinjin@gmail.com";
+	private String email2 = "ting3@gmail.com";
 
 	public void init() {
-		loginPage = new LoginPage();
-		homePage = new HomePage();
-		userPage = new UserPage();
-		userInforPage = new UserInforPage();
-		emailPage = new EmailPage();
+		loginPageExt = new LoginPageExt();
+		studyPageExt = new StudyPageExt();
+		userPageExt = new UserPageExt();
+		userInforPageExt = new UserInforPageExt();
+		emailPageExt = new EmailPageExt();
 	}
 
 	@Test
 	@MobileTest
-	public void testChangePhone() {
+	public void testChangeEmail() {
 		init();
-		login(phone, authcode);
+		loginPageExt.login(phone, authcode);
+		studyPageExt.gotoUserPage();
+		userPageExt.gotoUserInforPage();
 		changeEmail(email1, email2);
+		changeEmail(email2, email1);
 	}
 
-	public void login(String phone, String authcode) {
-		WebDriverWaitUtils.waitUntilElementIsVisible(loginPage.getPhoneTextField());
-		loginPage.getPhoneTextField().setText(phone);
-		loginPage.getAuthcodeTextField().setText(authcode);
-		loginPage.getLoginButton().tap(homePage.getUserElement());
-	}
-
-	public void changeEmail(String email1, String email2) {
-		homePage.getUserElement().tap(userPage.getUserInforElement());
-		userPage.getUserInforElement().tap(userInforPage.getEmailElement());
-		setEmail(email1,email2);
-		setEmail(email2, email1);
-	}
-
-	public void setEmail(String email1, String email2) {
-		WebDriverWaitUtils.waitUntilElementIsVisible(userInforPage.getEmailElement());
-		userInforPage.getEmailElement().tap(emailPage.getEmailTextField());
-		WebDriverWaitUtils.waitUntilElementIsVisible(emailPage.getEmailTextField());
-		clearText(emailPage.getEmailTextField(), email1);
-		emailPage.getEmailTextField().setText(email2);
-		emailPage.getBindButton().tap(userInforPage.getPhoneElement());
+	public void changeEmail(String email1, String email2) {	
+		userInforPageExt.gotoEmailPage();
+		emailPageExt.changeEmail(email1, email2);
+		WebDriverWaitUtils.waitUntilElementIsVisible(userInforPageExt.getEmailElement());
 		SeLionReporter.log("change successfully, goto user information page now", true);
 	}
+
 	
-	public void clearText(MobileTextField tx, String str) {
-		for (int i = 0; i < str.length(); ++i) {
-			tx.clearText();
-		}
-	}
+
 
 }

@@ -11,4 +11,9 @@ elements:
     android:
       US: "//android.view.View[1]//android.view.View[3]"
     ios:
-      US: "test"      
+      US: "test"    
+  logoutButton:
+    android:
+      US: "//android.view.View[4]"
+    ios:
+      US: "test"        

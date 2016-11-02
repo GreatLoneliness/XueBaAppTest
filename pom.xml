@@ -96,7 +96,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<basePackage>com.zhijin</basePackage>
+					<basePackage>com.zhijin.xueba</basePackage>
 				</configuration>
 			</plugin>
 			<plugin>
