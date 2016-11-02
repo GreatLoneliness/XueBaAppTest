@@ -14,7 +14,7 @@
 
 	<test verbose="2" name="AndroidTest" annotations="JDK">
 		<classes>
-			<class name="com.xueba.testcase.ChangeUserInforTest"></class>
+			<class name="com.xueba.testcase.AllPageTest"></class>
 		</classes>
 	</test>
 

@@ -11,6 +11,11 @@ import com.zhijin.xueba.StudyPage;
 
 public class StudyPageExt extends StudyPage {
 
+	public void gotoNoticePage() {
+		WebDriverWaitUtils.waitUntilElementIsVisible(getNoticeButton());
+		getNoticeButton().tap();
+	}
+
 	public void gotoUserPage() {
 		WebDriverWaitUtils.waitUntilElementIsVisible(getUserElement());
 		getUserElement().tap();
