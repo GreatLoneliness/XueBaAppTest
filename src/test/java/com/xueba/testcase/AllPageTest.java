@@ -8,6 +8,7 @@ import com.paypal.selion.reports.runtime.SeLionReporter;
 import com.xueba.datagenerator.EmailGenerator;
 import com.xueba.datagenerator.IDGenerator;
 import com.xueba.datagenerator.PhoneGenerator;
+import com.xueba.pageext.BottomToolbarExt;
 import com.xueba.pageext.EmailPageExt;
 import com.xueba.pageext.LoginPageExt;
 import com.xueba.pageext.NoticePageExt;
@@ -27,6 +28,7 @@ public class AllPageTest {
 	private PhonePageExt phonePageExt;
 	private EmailPageExt emailPageExt;
 	private NoticePageExt noticePageExt;
+	private BottomToolbarExt bottomToolbarExt;
 
 	private String phone = PhoneGenerator.getPhone();
 	private String id = IDGenerator.getID();
@@ -45,6 +47,7 @@ public class AllPageTest {
 		phonePageExt = new PhonePageExt();
 		emailPageExt = new EmailPageExt();
 		noticePageExt = new NoticePageExt();
+		bottomToolbarExt = new BottomToolbarExt();
 	}
 
 	@Test
@@ -67,7 +70,7 @@ public class AllPageTest {
 	}
 
 	public void testChangeEmail() {
-		studyPageExt.gotoUserPage();
+		bottomToolbarExt.gotoUserPage();
 		userPageExt.gotoUserInforPage();
 		userInforPageExt.gotoEmailPage();
 		emailPageExt.changeEmail(email, emailEdit);
@@ -88,13 +91,13 @@ public class AllPageTest {
 
 	public void testLogin() {
 		loginPageExt.login(phone1, authcode);
-		WebDriverWaitUtils.waitUntilElementIsVisible(studyPageExt.getNoticeButton());
+		WebDriverWaitUtils.waitUntilElementIsVisible(bottomToolbarExt.getNoticeElement());
 		SeLionReporter.log("login successfully, goto study page now", true);
 	}
 
 	public void testNoticeConfirmGo() {
 		NoticeUtil.sendMeetingNotice();
-		studyPageExt.gotoNoticePage();
+		bottomToolbarExt.gotoNoticePage();
 		noticePageExt.tapFirstNotice();
 		noticePageExt.tapNoticeDetailOneButton();
 		WebDriverWaitUtils.waitUntilElementIsInvisible(noticePageExt.getNoticeDetailTwoButton());
@@ -104,7 +107,7 @@ public class AllPageTest {
 	}
 
 	public void testNoticeConfirmNotGo() {
-		studyPageExt.gotoNoticePage();
+		bottomToolbarExt.gotoNoticePage();
 		noticePageExt.tapFirstNotice();
 		noticePageExt.tapNoticeDetailTwoButton();
 		WebDriverWaitUtils.waitUntilElementIsInvisible(noticePageExt.getNoticeDetailTwoButton());

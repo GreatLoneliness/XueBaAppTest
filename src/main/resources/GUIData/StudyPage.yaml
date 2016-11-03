@@ -7,13 +7,3 @@ elements:
       US: "//android.widget.ListView[2]"
     ios:
       US: "test"
-  noticeButton:
-    android:
-      US: "//android.support.v7.app.ActionBar.Tab[2]"
-    ios:
-      US: "test"
-  userElement:
-    android:
-      US: "//android.support.v7.app.ActionBar.Tab[3]"
-    ios:
-      US: "test"    

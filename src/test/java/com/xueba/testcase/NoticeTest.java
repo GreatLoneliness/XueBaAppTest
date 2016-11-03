@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import com.paypal.selion.annotations.MobileTest;
 import com.paypal.selion.platform.utilities.WebDriverWaitUtils;
 import com.paypal.selion.reports.runtime.SeLionReporter;
+import com.xueba.pageext.BottomToolbarExt;
 import com.xueba.pageext.LoginPageExt;
 import com.xueba.pageext.NoticePageExt;
 import com.xueba.pageext.StudyPageExt;
@@ -27,7 +28,7 @@ public class NoticeTest {
 
 	private NoticePageExt noticePageExt;
 	private LoginPageExt loginPageExt;
-	private StudyPageExt studyPageExt;
+	private BottomToolbarExt bottomToolbarExt;
 
 	/**
 	 * 初始化界面对象
@@ -35,7 +36,7 @@ public class NoticeTest {
 	private void init() {
 		noticePageExt = new NoticePageExt();
 		loginPageExt = new LoginPageExt();
-		studyPageExt = new StudyPageExt();
+		bottomToolbarExt = new BottomToolbarExt();
 		NoticeUtil.sendMeetingNotice();// 发送两条通知
 		NoticeUtil.sendMeetingNotice();
 	}
@@ -45,7 +46,7 @@ public class NoticeTest {
 	public void testNoticeConfirmGo() {
 		init();
 		loginPageExt.login(phone, authcode);
-		studyPageExt.gotoNoticePage();
+		bottomToolbarExt.gotoNoticePage();
 		noticePageExt.tapFirstNotice();
 		noticePageExt.tapNoticeDetailOneButton();
 		noticePageExt.backToNoticeList();
@@ -54,7 +55,7 @@ public class NoticeTest {
 	@Test(priority = 2)
 	@MobileTest
 	public void testNoticeConfirmNotGo() {
-		studyPageExt.gotoNoticePage();
+		bottomToolbarExt.gotoNoticePage();
 		noticePageExt.tapFirstNotice();
 		noticePageExt.tapNoticeDetailTwoButton();
 		noticePageExt.backToNoticeList();
