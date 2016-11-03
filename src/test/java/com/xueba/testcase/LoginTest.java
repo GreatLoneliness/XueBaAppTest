@@ -30,7 +30,7 @@ public class LoginTest {
 		init();
 		loginPageExt.login(phone, authcode);
 		WebDriverWaitUtils.waitUntilElementIsVisible(studyPageExt.getDynamicList());
-		SeLionReporter.log("login successfully, goto study page now", true); 
+		SeLionReporter.log("login successfully, at study page now", true); 
 	}
 	
 	public void init() {

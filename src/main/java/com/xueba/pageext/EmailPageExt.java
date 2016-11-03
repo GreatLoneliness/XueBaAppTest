@@ -2,6 +2,7 @@ package com.xueba.pageext;
 
 import com.paypal.selion.platform.mobile.elements.MobileTextField;
 import com.paypal.selion.platform.utilities.WebDriverWaitUtils;
+import com.paypal.selion.reports.runtime.SeLionReporter;
 import com.zhijin.xueba.EmailPage;
 
 /**
@@ -14,6 +15,7 @@ public class EmailPageExt extends EmailPage {
 
 	public void changeEmail(String email1, String email2) {
 		WebDriverWaitUtils.waitUntilElementIsVisible(getEmailTextField());
+		SeLionReporter.log("at email page now", true);
 		clearText(getEmailTextField(), email1);
 		getEmailTextField().setText(email2);
 		getBindButton().tap();

@@ -50,7 +50,7 @@ public class ChangeUserInforTest {
 		userInforPageExt.back();
 		userPageExt.logout();
 		WebDriverWaitUtils.waitUntilElementIsVisible(loginPageExt.getPhoneTextField());
-		SeLionReporter.log("logout successfully, goto login page now", true);
+		SeLionReporter.log("logout successfully, at login page now", true);
 	}
 	
 	public void init() {
@@ -66,14 +66,14 @@ public class ChangeUserInforTest {
 		userInforPageExt.gotoPhonePage();
 	    phonePageExt.changePhone(phone1, phone2, authcode);
 	    WebDriverWaitUtils.waitUntilElementIsVisible(userInforPageExt.getPhoneElement());
-	    SeLionReporter.log("change successfully, goto user information page now", true);
+	    SeLionReporter.log("change successfully, at user information page now", true);
 	}	
 
 	public void changeEmail(String email1, String email2) {	
 		userInforPageExt.gotoEmailPage();
 		emailPageExt.changeEmail(email1, email2);
 		WebDriverWaitUtils.waitUntilElementIsVisible(userInforPageExt.getEmailElement());
-		SeLionReporter.log("change successfully, goto user information page now", true);
+		SeLionReporter.log("change successfully, at user information page now", true);
 	}
 	
 }

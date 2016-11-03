@@ -53,7 +53,7 @@ public class ChangePhoneTest {
 		userInforPageExt.gotoPhonePage();
 	    phonePageExt.changePhone(phone1, phone2, authcode);
 	    WebDriverWaitUtils.waitUntilElementIsVisible(userInforPageExt.getPhoneElement());
-	    SeLionReporter.log("change successfully, goto user information page now", true);
+	    SeLionReporter.log("change successfully, at user information page now", true);
 	}
 
 }

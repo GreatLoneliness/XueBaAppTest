@@ -53,7 +53,7 @@ public class ChangeEmailTest {
 		userInforPageExt.gotoEmailPage();
 		emailPageExt.changeEmail(email1, email2);
 		WebDriverWaitUtils.waitUntilElementIsVisible(userInforPageExt.getEmailElement());
-		SeLionReporter.log("change successfully, goto user information page now", true);
+		SeLionReporter.log("change successfully, at user information page now", true);
 	}
 
 	

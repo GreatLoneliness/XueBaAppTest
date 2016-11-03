@@ -36,7 +36,7 @@ public class RegisterTest {
 		loginPageExt.gotoRegisterPage();
 		registerPageExt.register(phone, authcode, id, email);
 		WebDriverWaitUtils.waitUntilElementIsVisible(studyPageExt.getDynamicList());
-		SeLionReporter.log("register successfully, goto study page now", true);
+		SeLionReporter.log("register successfully, at study page now", true);
 	}
 	
 	public void init() {
