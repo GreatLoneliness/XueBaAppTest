@@ -5,9 +5,9 @@ import org.testng.annotations.Test;
 import com.paypal.selion.annotations.MobileTest;
 import com.paypal.selion.platform.utilities.WebDriverWaitUtils;
 import com.paypal.selion.reports.runtime.SeLionReporter;
+import com.xueba.pageext.BottomToolbarExt;
 import com.xueba.pageext.LoginPageExt;
 import com.xueba.pageext.PhonePageExt;
-import com.xueba.pageext.StudyPageExt;
 import com.xueba.pageext.UserInforPageExt;
 import com.xueba.pageext.UserPageExt;
 
@@ -20,10 +20,10 @@ import com.xueba.pageext.UserPageExt;
 public class ChangePhoneTest {
 
 	private LoginPageExt loginPageExt;
-	private StudyPageExt studyPageExt;
 	private UserPageExt userPageExt;
 	private UserInforPageExt userInforPageExt;
 	private PhonePageExt phonePageExt;
+	private BottomToolbarExt bottomToolbarExt;
 
 	private String phone1 = "18910213610";
 	private String phone2 = "18910219999";
@@ -35,7 +35,7 @@ public class ChangePhoneTest {
 	public void testChangePhone() {
 		init();
 		loginPageExt.login(phone1, authcode);
-		studyPageExt.gotoUserPage();
+		bottomToolbarExt.gotoUserPage();
 		userPageExt.gotoUserInforPage();
 		changePhone(phone1, phone2, authcode);
 		changePhone(phone2, phone1, authcode);
@@ -43,10 +43,10 @@ public class ChangePhoneTest {
 	
 	public void init() {
 		loginPageExt = new LoginPageExt();
-		studyPageExt = new StudyPageExt();
 		userPageExt = new UserPageExt();
 		userInforPageExt = new UserInforPageExt();
 		phonePageExt = new PhonePageExt();
+		bottomToolbarExt = new BottomToolbarExt();
 	}
 	
 	public void changePhone(String phone1, String phone2, String authcode) {

@@ -1,0 +1,19 @@
+baseClass: "com.paypal.selion.testcomponents.BasicPageImpl"
+platform: "mobile"
+defaultLocale: "US"
+elements:
+  studyElement:
+    android:
+      US: "//android.support.v7.a.a.c[1]|//android.support.v7.app.ActionBar.Tab[1]"
+    ios:
+      US: "test"
+  noticeElement:
+    android:
+      US: "//android.support.v7.a.a.c[2]|//android.support.v7.app.ActionBar.Tab[2]"
+    ios:
+      US: "test"
+  userElement:
+    android:
+      US: "//android.support.v7.a.a.c[3]|//android.support.v7.app.ActionBar.Tab[3]"
+    ios:
+      US: "test"    
