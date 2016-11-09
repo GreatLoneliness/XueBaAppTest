@@ -6,9 +6,9 @@ elements:
     android:
       US: "//android.view.View[2]"
     ios:
-      US: "test"     
+      US: "//UIAWebView[1]/UIATextField[1]"     
   bindButton:
     android:
       US: "//android.view.View[3]"
     ios:
-      US: "test"               
+      US: "//UIAWebView[1]/UIAStaticText[2]"               

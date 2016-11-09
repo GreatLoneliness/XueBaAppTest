@@ -1,5 +1,10 @@
 package com.xueba.testcase;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
 
 import com.paypal.selion.annotations.MobileTest;
@@ -113,6 +118,21 @@ public class AllPageTest {
 		WebDriverWaitUtils.waitUntilElementIsInvisible(noticePageExt.getNoticeDetailTwoButton());
 		SeLionReporter.log("确认不参会成功", true);
 		noticePageExt.backToNoticeList();
+	}
+
+	@AfterSuite
+	public void openReport() {
+		String dir = System.getProperty("user.dir");
+		String filePath = dir + "/test-output/RuntimeReporter/index.html";
+		File file = new File(filePath);
+		if (file.isFile()) {
+			try {
+				// 获取桌面默认的浏览器并显示文件
+				Desktop.getDesktop().browse(file.toURI());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

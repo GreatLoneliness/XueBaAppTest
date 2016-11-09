@@ -6,14 +6,14 @@ elements:
     android:
       US: "//android.view.View[1]//android.view.View[2]"
     ios:
-      US: "test"
+      US: "//UIAScrollView[1]/UIAWebView[1]"
   loginButton:
     android:
       US: "//android.view.View[1]//android.view.View[3]"
     ios:
-      US: "test"    
+      US: "//UIAScrollView[1]/UIAWebView[1]/UIAStaticText[3]"    
   logoutButton:
     android:
       US: "//android.view.View[4]"
     ios:
-      US: "test"        
+      US: "///UIALink[1]/UIAStaticText[1]"        

@@ -6,24 +6,24 @@ elements:
     android:
       US: "//android.view.View[3]"
     ios:
-      US: "test"      
+      US: "//UIATextField[1]"      
   authcodeTextField:
     android:
       US: "//android.view.View[5]"
     ios:
-      US: "test"      
+      US: "//UIATextField[2]"      
   idTextField:
     android:
       US: "//android.view.View[8]"
     ios:
-      US: "test"      
+      US: "//UIATextField[3]"      
   mailTextField:
     android:
       US: "//android.view.View[10]"
     ios:
-      US: "test"
+      US: "//UIATextField[4]"
   registerButton:
     android:
       US: "//android.view.View[11]"  
     ios:
-      US: "test"       
+      US: "//UIAStaticText[5]"       

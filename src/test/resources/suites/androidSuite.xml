@@ -14,8 +14,8 @@
 
 	<test verbose="2" name="XuebaAppTestAndroid" annotations="JDK">
 		<classes>
-			<!-- <class name="com.xueba.testcase.AllPageTest"></class> -->
-			<class name="com.xueba.testcase.ScenarioTest"></class>
+			<class name="com.xueba.testcase.AllPageTest"></class>
+			<!-- <class name="com.xueba.testcase.ScenarioTest"></class> -->
 		</classes>
 	</test>
 
