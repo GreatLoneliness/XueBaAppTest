@@ -1,18 +1,13 @@
 package com.xueba.testcase;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
 import com.paypal.selion.annotations.MobileTest;
-import com.paypal.selion.platform.utilities.WebDriverWaitUtils;
-import com.paypal.selion.reports.runtime.SeLionReporter;
 import com.xueba.pageext.BottomToolbarExt;
 import com.xueba.pageext.LoginPageExt;
 import com.xueba.pageext.NoticePageExt;
-import com.xueba.pageext.StudyPageExt;
 import com.xueba.util.NoticeUtil;
-import com.zhijin.xueba.LoginPage;
-import com.zhijin.xueba.NoticePage;
-import com.zhijin.xueba.StudyPage;
 
 /**
  * 通知测试
@@ -37,8 +32,8 @@ public class NoticeTest {
 		noticePageExt = new NoticePageExt();
 		loginPageExt = new LoginPageExt();
 		bottomToolbarExt = new BottomToolbarExt();
-		NoticeUtil.sendMeetingNotice();// 发送两条通知
-		NoticeUtil.sendMeetingNotice();
+//		NoticeUtil.sendMeetingNotice();// 发送两条通知
+//		NoticeUtil.sendMeetingNotice();
 	}
 
 	@Test(priority = 1)
@@ -49,16 +44,16 @@ public class NoticeTest {
 		bottomToolbarExt.gotoNoticePage();
 		noticePageExt.tapFirstNotice();
 		noticePageExt.tapNoticeDetailOneButton();
-		noticePageExt.backToNoticeList();
+//		noticePageExt.backToNoticeList();
 	}
 
-	@Test(priority = 2)
-	@MobileTest
-	public void testNoticeConfirmNotGo() {
-		bottomToolbarExt.gotoNoticePage();
-		noticePageExt.tapFirstNotice();
-		noticePageExt.tapNoticeDetailTwoButton();
-		noticePageExt.backToNoticeList();
-	}
+//	@Test(priority = 2)
+//	@MobileTest
+//	public void testNoticeConfirmNotGo() {
+//		bottomToolbarExt.gotoNoticePage();
+//		noticePageExt.tapFirstNotice();
+//		noticePageExt.tapNoticeDetailTwoButton();
+//		noticePageExt.backToNoticeList();
+//	}
 
 }

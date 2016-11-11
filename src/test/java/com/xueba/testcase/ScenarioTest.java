@@ -28,7 +28,7 @@ import com.xueba.util.NoticeUtil;
 @Test(singleThreaded = true)
 @MobileTest
 public class ScenarioTest {
-	
+
 	private LoginPageExt loginPageExt;
 	private RegisterPageExt registerPageExt;
 	private StudyPageExt studyPageExt;
@@ -47,7 +47,7 @@ public class ScenarioTest {
 	private String phone2 = "18910219999";
 	private String email1 = "ting2jinjin@gmail.com";
 	private String email2 = "ting3jinjin@gmail.com";
-	
+
 	@Test(priority = 1)
 	public void testRegister() {
 		init();
@@ -56,7 +56,7 @@ public class ScenarioTest {
 		WebDriverWaitUtils.waitUntilElementIsVisible(studyPageExt.getDynamicList());
 		SeLionReporter.log("register successfully, at study page now", true);
 	}
-	
+
 	@Test(priority = 2)
 	public void testLogin() {
 		bottomToolbarExt.gotoUserPage();
@@ -99,7 +99,7 @@ public class ScenarioTest {
 		WebDriverWaitUtils.waitUntilElementIsVisible(userInforPageExt.getEmailElement());
 		SeLionReporter.log("change successfully, at user information page now", true);
 	}
-	
+
 	@Test(priority = 7)
 	@MobileTest
 	public void testNoticeConfirmGo() {
@@ -108,7 +108,7 @@ public class ScenarioTest {
 		bottomToolbarExt.gotoNoticePage();
 		noticePageExt.tapFirstNotice();
 		noticePageExt.tapNoticeDetailOneButton();
-		WebDriverWaitUtils.waitUntilElementIsInvisible(noticePageExt.getNoticeDetailTwoButton());
+		WebDriverWaitUtils.waitUntilElementIsInvisible(noticePageExt.getNoticeDetailTwoElement());
 		SeLionReporter.log("确认参会成功", true);
 	}
 
@@ -121,7 +121,7 @@ public class ScenarioTest {
 		bottomToolbarExt.gotoNoticePage();
 		noticePageExt.tapFirstNotice();
 		noticePageExt.tapNoticeDetailTwoButton();
-		WebDriverWaitUtils.waitUntilElementIsInvisible(noticePageExt.getNoticeDetailTwoButton());
+		WebDriverWaitUtils.waitUntilElementIsInvisible(noticePageExt.getNoticeDetailTwoElement());
 		SeLionReporter.log("确认不参会成功", true);
 	}
 
@@ -136,5 +136,5 @@ public class ScenarioTest {
 		noticePageExt = new NoticePageExt();
 		bottomToolbarExt = new BottomToolbarExt();
 	}
-	
+
 }

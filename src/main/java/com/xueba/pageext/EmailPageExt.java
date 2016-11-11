@@ -1,5 +1,7 @@
 package com.xueba.pageext;
 
+import com.paypal.selion.platform.grid.Grid;
+import com.paypal.selion.platform.grid.SeLionAppiumIOSDriver;
 import com.paypal.selion.platform.mobile.elements.MobileTextField;
 import com.paypal.selion.platform.utilities.WebDriverWaitUtils;
 import com.paypal.selion.reports.runtime.SeLionReporter;
@@ -18,12 +20,19 @@ public class EmailPageExt extends EmailPage {
 		SeLionReporter.log("at email page now", true);
 		clearText(getEmailTextField(), email1);
 		getEmailTextField().setText(email2);
+		if (Grid.driver() instanceof SeLionAppiumIOSDriver) {
+			getHideKeyBoardButton().tap();
+		}
 		getBindButton().tap();
 	}
-	
+
 	public void clearText(MobileTextField tx, String str) {
-		for (int i = 0; i < str.length(); ++i) {
+		if (Grid.driver() instanceof SeLionAppiumIOSDriver) {
 			tx.clearText();
+		} else {
+			for (int i = 0; i < str.length(); ++i) {
+				tx.clearText();
+			}
 		}
 	}
 }

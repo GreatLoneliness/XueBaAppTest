@@ -1,8 +1,12 @@
 package com.xueba.pageext;
 
-import com.paypal.selion.platform.mobile.elements.MobileTextField;
+import java.util.Set;
+
+import org.openqa.selenium.WebElement;
+
+import com.paypal.selion.platform.grid.Grid;
+import com.paypal.selion.platform.grid.SeLionAppiumIOSDriver;
 import com.paypal.selion.platform.utilities.WebDriverWaitUtils;
-import com.zhijin.xueba.EmailPage;
 import com.zhijin.xueba.NoticePage;
 
 /**
@@ -19,13 +23,19 @@ public class NoticePageExt extends NoticePage {
 	}
 
 	public void tapNoticeDetailOneButton() {
-		WebDriverWaitUtils.waitUntilElementIsVisible(getNoticeDetailOneButton());
-		getNoticeDetailOneButton().tap();// 点击通知详情第一个按钮
+		if (Grid.driver() instanceof SeLionAppiumIOSDriver) {
+			WebElement element = Grid.driver().findElementByXPath(
+					"//div[@class='weui_media_bd']//div[@ng-click='goMessageDetail(item)'][1]|确认参会");
+			element.click();
+		} else {
+			WebDriverWaitUtils.waitUntilElementIsVisible(getNoticeDetailOneElement());
+			getNoticeDetailOneElement().tap();// 点击通知详情第一个按钮
+		}
 	}
 
 	public void tapNoticeDetailTwoButton() {
-		WebDriverWaitUtils.waitUntilElementIsVisible(getNoticeDetailTwoButton());
-		getNoticeDetailTwoButton().tap();// 点击通知详情第二个按钮
+		WebDriverWaitUtils.waitUntilElementIsVisible(getNoticeDetailTwoElement());
+		getNoticeDetailTwoElement().tap();// 点击通知详情第二个按钮
 	}
 
 	public void backToNoticeList() {
@@ -33,9 +43,4 @@ public class NoticePageExt extends NoticePage {
 		getNoticeBackButton().tap();// 返回到通知列表
 	}
 
-	public void clearText(MobileTextField tx, String str) {
-		for (int i = 0; i < str.length(); ++i) {
-			tx.clearText();
-		}
-	}
 }

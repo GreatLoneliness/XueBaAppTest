@@ -9,10 +9,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import io.appium.java_client.AppiumDriver;
 
 public class NoticeUtil {
 	private static String TOKEN = "37f8b9b007294687ae93c2615706fdb1";
@@ -152,4 +155,5 @@ public class NoticeUtil {
 				+ "  },\n" + "  \"dueDate\": 1479974359333,\n" + "  \"loopPush\" :0\n" + "}";
 		return meetNotice;
 	}
+
 }

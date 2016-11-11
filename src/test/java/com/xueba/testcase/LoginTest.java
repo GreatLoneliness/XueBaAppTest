@@ -1,6 +1,5 @@
 package com.xueba.testcase;
 
-
 import org.testng.annotations.Test;
 
 import com.paypal.selion.annotations.MobileTest;
@@ -16,26 +15,25 @@ import com.xueba.pageext.StudyPageExt;
  */
 
 public class LoginTest {
-	
+
 	private LoginPageExt loginPageExt;
 	private StudyPageExt studyPageExt;
-	
+
 	private String phone = "18910213610";
 	private String authcode = "789456";
 
-	
 	@Test
 	@MobileTest
 	public void testLogin() {
 		init();
 		loginPageExt.login(phone, authcode);
 		WebDriverWaitUtils.waitUntilElementIsVisible(studyPageExt.getDynamicList());
-		SeLionReporter.log("login successfully, at study page now", true); 
+		SeLionReporter.log("login successfully, at study page now", true);
 	}
-	
+
 	public void init() {
 		loginPageExt = new LoginPageExt();
 		studyPageExt = new StudyPageExt();
 	}
-	
+
 }

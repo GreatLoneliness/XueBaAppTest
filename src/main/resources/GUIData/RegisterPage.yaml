@@ -26,4 +26,9 @@ elements:
     android:
       US: "//android.view.View[11]"  
     ios:
-      US: "//UIAStaticText[5]"       
+      US: "//UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[5]" 
+  hideKeyBoardButton:
+    android:
+      US: "test"  
+    ios:
+      US: "//UIAWindow[2]/UIAToolbar[1]/UIAButton[3]"

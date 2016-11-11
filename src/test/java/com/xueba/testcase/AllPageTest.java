@@ -105,7 +105,7 @@ public class AllPageTest {
 		bottomToolbarExt.gotoNoticePage();
 		noticePageExt.tapFirstNotice();
 		noticePageExt.tapNoticeDetailOneButton();
-		WebDriverWaitUtils.waitUntilElementIsInvisible(noticePageExt.getNoticeDetailTwoButton());
+		WebDriverWaitUtils.waitUntilElementIsInvisible(noticePageExt.getNoticeDetailTwoElement());
 		SeLionReporter.log("确认参会成功", true);
 		NoticeUtil.sendMeetingNotice();
 		noticePageExt.backToNoticeList();
@@ -115,7 +115,7 @@ public class AllPageTest {
 		bottomToolbarExt.gotoNoticePage();
 		noticePageExt.tapFirstNotice();
 		noticePageExt.tapNoticeDetailTwoButton();
-		WebDriverWaitUtils.waitUntilElementIsInvisible(noticePageExt.getNoticeDetailTwoButton());
+		WebDriverWaitUtils.waitUntilElementIsInvisible(noticePageExt.getNoticeDetailTwoElement());
 		SeLionReporter.log("确认不参会成功", true);
 		noticePageExt.backToNoticeList();
 	}

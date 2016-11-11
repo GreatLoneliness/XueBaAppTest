@@ -16,9 +16,19 @@ elements:
     android:
       US: "//android.view.View[7]"  
     ios:
-      US: "//UIAStaticText[3]"   
+      US: "//UIAScrollView[1]/UIAWebView[1]/UIAStaticText[3]"   
   registerButton:
     android:
       US: "//android.view.View[8]"  
     ios:
-      US: "//UIAStaticText[5]" 
+      US: "//UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[5]"   
+  hideKeyBoardButton:
+    android:
+      US: "test"  
+    ios:
+      US: "//UIAWindow[2]/UIAToolbar[1]/UIAButton[3]"    
+  confirmNoticeButton:
+    android:
+      US: "test"  
+    ios:
+      US: "//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]"
